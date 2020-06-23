@@ -1,4 +1,5 @@
-﻿using AdvancedExternalReviews;
+﻿using AdvancedApprovalReviews;
+using AdvancedExternalReviews;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
@@ -17,9 +18,17 @@ namespace AlloyTemplates.Business.AlloyReviews
             context.Services.Configure<ExternalReviewOptions>(options =>
             {
                 options.EditableLinksEnabled = true;
-                options.PinCodeSecurity.Enabled = true;
+                options.PinCodeSecurity.Enabled = false;
                 options.PinCodeSecurity.Required = true;
                 options.PinCodeSecurity.CodeLength = 5;
+
+                options.ContentReplacement.ReplaceChildren = true;
+                options.ContentReplacement.ReplaceContent = true;
+            });
+
+            context.Services.Configure<ApprovalOptions>(options =>
+            {
+                options.Notifications.NotificationsEnabled = true;
             });
         }
 

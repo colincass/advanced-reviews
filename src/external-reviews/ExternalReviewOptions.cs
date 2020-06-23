@@ -62,7 +62,28 @@ namespace AdvancedExternalReviews
         /// </summary>
         public ExternalReviewRestrictionOptions Restrictions { get; } = new ExternalReviewRestrictionOptions();
 
+        /// <summary>
+        /// PIN Code security options
+        /// </summary>
         public PinCodeSecurityOptions PinCodeSecurity { get; } = new PinCodeSecurityOptions();
+
+        /// <summary>
+        /// Content Replacement options
+        /// </summary>
+        public ContentReplacement ContentReplacement { get; private set; } = new ContentReplacement();
+    }
+
+    public class ContentReplacement
+    {
+        /// <summary>
+        /// Should replace children contents when in review mode
+        /// </summary>
+        public bool ReplaceChildren { get; set; } = false;
+
+        /// <summary>
+        /// Should replace content when loading using IContentLoader
+        /// </summary>
+        public bool ReplaceContent { get; set; } = false;
     }
 
     public class ExternalReviewRestrictionOptions
